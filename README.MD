@@ -4,8 +4,9 @@ RU: Тестовая версия. Статистика пользователе
 
 Зайти в папку и запустить файл initdb.sh
 
+cd anyconnectusersandsyslog
 chmod 777 initdb.sh
-cd anyconnectusersandsyslog ./initdb.sh
+./initdb.sh
 
 Дождаться готовности PSQL сервера и остановить запущеный контейнер - ctrl+c
 
@@ -29,7 +30,9 @@ Install (on docker host): git clone https://github.com/OlegPowerC/anyconnectuser
 
 Run initdb.sh for create database and tables
 
-cd anyconnectusersandsyslog ./initdb.sh
+cd anyconnectusersandsyslog
+chmod 777 initdb.sh
+./initdb.sh
 
 Wait for PSQL complete initial work and start, then exit - ctrl+c
 
