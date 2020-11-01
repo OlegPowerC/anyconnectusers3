@@ -1,0 +1,52 @@
+version: '3.1'
+
+networks:
+  netflow_network:
+    driver: bridge
+services:
+  db3:
+    image: postgres
+    networks:
+      netflow_network:
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: netflow
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - 5442:5432
+  anyconnectusesapi3:
+    image: ciscoliveru/anyconnectapi3:latest
+    networks:
+      netflow_network:
+    restart: always
+    environment:
+      PSQLIP: db3
+      PSQLPORT: 5432
+      PSQLUSER: netflow
+      PSQLPASSWORD: netflow
+      DEBUGMODE: 0
+      PSQLDBNAME: netflow
+      TABLENAME: anyconnect
+    ports:
+      - 8182:8181
+  anyconnectuses3:
+    image: ciscoliveru/anyconnectusers3:latest
+    depends_on:
+      - db3
+    networks:
+      netflow_network:
+    restart: always
+    environment:
+      PSQLIP: db3
+      PSQLPORT: 5432
+      PSQLUSER: netflow
+      PSQLPASSWORD: netflow
+      DEBUGMODE: 200
+      PSQLDBNAME: netflow
+      TABLENAME: anyconnect
+      GEOLOCATIONAPIKEY: TestApiKey
+    ports:
+      - 7002:7002
