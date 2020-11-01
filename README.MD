@@ -4,6 +4,7 @@ RU: Тестовая версия. Статистика пользователе
 
 Зайти в папку и запустить файл initdb.sh
 
+chmod 777 initdb.sh
 cd anyconnectusersandsyslog ./initdb.sh
 
 Дождаться готовности PSQL сервера и остановить запущеный контейнер - ctrl+c
