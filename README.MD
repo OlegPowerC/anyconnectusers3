@@ -1,4 +1,4 @@
-RU: Тестовая версия. Статистика пользователей AnyConnect + UI с базой на Postgre SQL
+RU: Тестовая третья версия. Статистика пользователей AnyConnect + UI с базой на Postgre SQL
 
 Установка (на докер сервер): git clone https://github.com/OlegPowerC/anyconnectusers3.git
 
@@ -8,7 +8,37 @@ cd anyconnectusersandsyslog
 chmod 777 initdb.sh
 ./initdb.sh
 
-Дождаться готовности PSQL сервера и остановить запущеный контейнер - ctrl+c
+Дождаться готовности PSQL сервера
+Не должно быть сообщений об ошибках и вывод должен быть примерно следующий:
+server started
+
+/usr/local/bin/docker-entrypoint.sh: sourcing /docker-entrypoint-initdb.d/1_createdb.sh
+CREATE ROLE
+CREATE DATABASE
+GRANT
+
+/usr/local/bin/docker-entrypoint.sh: sourcing /docker-entrypoint-initdb.d/2_createtabledb.sh
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE INDEX
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+ALTER TABLE
+ALTER TABLE
+...........
+PostgreSQL init process complete; ready for start up.
+...........
+........... LOG:  database system is ready to accept connections
+
+После этого остановить запущеный контейнер - ctrl+c
 
 Затем можно запускать все контейнеры: docker-compose up
 
@@ -24,7 +54,7 @@ event manager applet EndSession event syslog id 113019 occurs 1 action 0 cli com
 
 service call-home call-home alert-group-config snapshot add-command "show vpn-sessiondb anyconnect" profile VPNSH destination transport-method http destination address http http://:7002/vpnsession msg-format xml destination transport-method http subscribe-to-alert-group snapshot periodic interval 1440
 
-EN: Betta version. AnyConnect users statistics + Syslog collector + UI common Postgre SQL database
+EN: Betta version 3. AnyConnect users statistics + UI common Postgre SQL database
 
 Install (on docker host): git clone https://github.com/OlegPowerC/anyconnectusersandsyslog.git
 
@@ -34,7 +64,34 @@ cd anyconnectusersandsyslog
 chmod 777 initdb.sh
 ./initdb.sh
 
-Wait for PSQL complete initial work and start, then exit - ctrl+c
+Wait for PSQL complete initial work and start, 
+log must be like:
+/usr/local/bin/docker-entrypoint.sh: sourcing /docker-entrypoint-initdb.d/1_createdb.sh
+CREATE ROLE
+CREATE DATABASE
+GRANT
+
+/usr/local/bin/docker-entrypoint.sh: sourcing /docker-entrypoint-initdb.d/2_createtabledb.sh
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE INDEX
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+CREATE TRIGGER
+ALTER TABLE
+ALTER TABLE
+...........
+PostgreSQL init process complete; ready for start up.
+...........
+........... LOG:  database system is ready to accept connections
+then exit - ctrl+c
 
 Now You can start all containers: docker-compose up
 
