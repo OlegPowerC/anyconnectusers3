@@ -54,6 +54,11 @@ event manager applet EndSession event syslog id 113019 occurs 1 action 0 cli com
 
 service call-home call-home alert-group-config snapshot add-command "show vpn-sessiondb anyconnect" profile VPNSH destination transport-method http destination address http http://:7002/vpnsession msg-format xml destination transport-method http subscribe-to-alert-group snapshot periodic interval 1440
 
+Для геолокации по IP адресу используется сервис https://ipstack.com/
+Необходимо получить API ключ и указать его в docker-compose.yml
+параметер GEOLOCATIONAPIKEY:
+
+===================================================================================================================
 EN: Betta version 3. AnyConnect users statistics + UI common Postgre SQL database
 
 Install (on docker host): git clone https://github.com/OlegPowerC/anyconnectusersandsyslog.git
@@ -107,3 +112,6 @@ event manager applet EndSession event syslog id 113019 occurs 1 action 0 cli com
 
 service call-home call-home alert-group-config snapshot add-command "show vpn-sessiondb anyconnect" profile VPNSH destination transport-method http destination address http http://:7002/vpnsession msg-format xml destination transport-method http subscribe-to-alert-group snapshot periodic interval 1440
 
+Gelolocation data get by https://ipstack.com/
+You must get API key and provide it ib: docker-compose.yml
+parameter - GEOLOCATIONAPIKEY:
