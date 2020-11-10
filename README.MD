@@ -43,7 +43,7 @@ LOG:  database system is ready to accept connections<br>
 <br>
 Затем можно запускать все контейнеры: docker-compose up<br>
 <br>
-По умолчанию интерфейс будет доступен по адресу HTTP://<ваш docker сервер>:8181 SyslogUI HTTP://<ваш docker сервер>:8182<br>
+По умолчанию интерфейс будет доступен по адресу HTTP://<ваш docker сервер>:8182<br>
 SQL порт TCP снаружи 5442 (можно выключить) Порт TCP 7002 слушает Call-Home сообщения от Cisco ASA<br>
 <br>
 Со стороны Cisco ASA:<br>
@@ -122,7 +122,7 @@ then exit - ctrl+c
 
 Now You can start all containers: docker-compose up
 
-By default: HTTP://:8181 SyslogUI HTTP://:8182 AnyConnect Users UI Port UDP 514 accept Syslog message SQL server accessible by port TCP 5442 (You can disable it) Port TCP 7002 accept Call-Home message from Cisco ASA
+By default: HTTP://<Your docker host ip>:8182 AnyConnect Users UI SQL server accessible by port TCP 5442 (You can disable it) Port TCP 7002 accept Call-Home message from Cisco ASA
 
 On Cisco ASA You must configure next:
 
