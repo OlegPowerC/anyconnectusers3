@@ -110,9 +110,17 @@ BEGIN
 END;
 $portdta_time$ LANGUAGE 'plpgsql';
 
+create unique index if not exists anyconnectuser_uindex
+    on anyconnect (username);
 
-create unique index if not exists anyconnect_id_uindex
-    on anyconnect (id);
+create unique index if not exists anyconnectstarttime_uindex
+    on anyconnect (starttime);
+
+create unique index if not exists anyconnectendtime_uindex
+    on anyconnect (endtime);
+
+create unique index if not exists syslog_addedtimedesc_uindex
+    on syslog (addedtime DESC);
 
 create trigger anyconnect_before_insert
     before insert
