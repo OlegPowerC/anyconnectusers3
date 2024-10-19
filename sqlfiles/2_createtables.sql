@@ -141,5 +141,3 @@ execute procedure portdta_time();
 
 alter table anyconnect owner to netflow;
 alter table syslog owner to netflow;
-
-
