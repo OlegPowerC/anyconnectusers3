@@ -4,7 +4,7 @@ RU: Тестовая третья версия. Статистика польз�
 git clone https://github.com/OlegPowerC/anyconnectusers3.git<br>
 Зайти в папку и запустить файл initdb.sh<br>
 <br>
-cd anyconnectusersandsyslog<br>
+cd anyconnectusers3<br>
 chmod 777 initdb.sh<br>
 ./initdb.sh<br>
 <br>
